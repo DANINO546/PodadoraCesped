@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Servicio local de podado profesional de césped, perfilado de orillas y limpieza de áreas verdes. Atención personalizada previa cita.">
+  <title>Servicio de Podado de Césped | Mantenimiento de Áreas Verdes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. BARRA SUPERIOR FIJA SIEMPRE VISIBLE -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#inicio" class="brand" aria-label="Inicio - Servicio de Podado de Césped">
+        <svg class="brand-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6 26C6 16.5 13 8 26 6C24 19 15.5 26 6 26Z" fill="#7CB342" stroke="#1B3B1E" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M6 26C12 20 18 14 26 6" stroke="#1B3B1E" stroke-width="2" stroke-linecap="round"/>
+          <path d="M12 25C13.5 21 17 18.5 21 18" stroke="#FAFDF6" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-text">Servicio de Podado de Césped</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#como-funciona">Cómo funciona</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2. PORTADA VISUAL (HERO) - ÚNICO BOTÓN DE CONTACTO WHATSAPP -->
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="badge">Mantenimiento de áreas verdes · Atención por cita</span>
+          <h1>Podado profesional de césped para un jardín impecable</h1>
+          <p class="hero-subtitle">
+            Cuidamos el pasto de tu hogar con cortes limpios, maquinaria calibrada y atención directa. No manejamos horarios fijos al público: trabajamos exclusivamente <strong>previa cita</strong> para dedicarle el tiempo necesario a tu espacio.
+          </p>
+          <div class="hero-actions">
+            <!-- Cambia 5215500000000 por tu número real de WhatsApp -->
+            <a href="https://wa.me/5215500000000?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20el%20podado%20de%20mi%20c%C3%A9sped" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.031 2C6.508 2 2.023 6.485 2.023 12.008c0 1.766.461 3.49 1.337 5.011L2 22l5.115-1.341a9.956 9.956 0 0 0 4.916 1.298h.004c5.522 0 10.008-4.486 10.008-10.008 0-2.674-1.041-5.188-2.932-7.079A9.942 9.942 0 0 0 12.031 2zm5.822 14.178c-.246.693-1.428 1.326-1.994 1.411-.513.077-1.162.109-1.876-.118-.434-.138-.99-.322-1.703-.63-2.997-1.294-4.954-4.312-5.104-4.512-.15-.2-1.219-1.622-1.219-3.094 0-1.472.771-2.196 1.045-2.495.274-.299.598-.374.797-.374.199 0 .399.002.573.01.184.009.43-.07.673.513.249.598.847 2.069.922 2.219.075.15.125.324.025.524-.1.199-.15.324-.299.499-.15.174-.314.389-.449.524-.149.149-.305.311-.131.61.174.299.774 1.277 1.662 2.069 1.142 1.018 2.105 1.334 2.404 1.483.299.15.474.125.648-.075.175-.199.748-.872.947-1.171.2-.299.399-.249.673-.15.274.1 1.744.823 2.043.972.299.15.498.224.573.349.075.125.075.723-.171 1.416z"/>
+              </svg>
+              <span>Cotizar por WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <!-- 📸 IMAGEN PNG DE PORTADA:
+               Crea una carpeta llamada "img" junto a tu index.html y guarda tu imagen como "portada.png"
+               (o cambia src="img/portada.png" por el nombre/ruta de tu archivo .png) -->
+          <img
+            src="img/Jardin.jpeg"
+            alt="Jardín residencial con césped verde recién podado bajo la luz del sol"
+            width="1000"
+            height="750"
+            class="hero-img"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FRANJA CENTRAL ANIMADA CON PODADORA (CANVAS HTML5) -->
+    <section class="mower-banner" aria-label="Animación de corte de césped">
+      <canvas id="mowerCanvas"></canvas>
+    </section>
+
+    <!-- 4. SECCIÓN DE SERVICIOS CON IMÁGENES PNG -->
+    <section id="servicios" class="services section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Modalidades de atención</span>
+          <h2>Servicios enfocados en la salud de tu césped</h2>
+          <p>Adaptamos la altura de corte y el tipo de trabajo según las condiciones actuales de tu jardín.</p>
+        </div>
+
+        <div class="cards-grid">
+          <!-- SERVICIO 1 -->
+          <article class="service-card">
+            <div class="card-media">
+              <!-- 📸 IMAGEN PNG SERVICIO 1: Guarda tu archivo como "img/servicio-1.png" -->
+              <img
+                src="img/Podadora.jpeg"
+                alt="Césped residencial verde recién cortado de manera uniforme"
+                loading="lazy"
+                width="800"
+                height="500"
+              >
+            </div>
+            <div class="card-body">
+              <h3>Podado Residencial Básico</h3>
+              <p>Corte uniforme en patios, jardines frontales y traseros. Mantenemos la altura ideal para fortalecer la raíz, conservar la humedad y lograr un tono verde vivo.</p>
+            </div>
+          </article>
+
+          <!-- SERVICIO 2 -->
+          <article class="service-card">
+            <div class="card-media">
+              <!-- 📸 IMAGEN PNG SERVICIO 2: Guarda tu archivo como "img/servicio-2.png" -->
+              <img
+                src="img/patioCesped.jpeg"
+                alt="Sendero de jardín con bordes de césped perfectamente delineados"
+                loading="lazy"
+                width="800"
+                height="500"
+              >
+            </div>
+            <div class="card-body">
+              <h3>Corte y Perfilado de Orillas</h3>
+              <p>Delineado preciso en los límites con banquetas, guarniciones, jardineras y muros para dar un acabado limpio, simétrico y arquitectónico a todo el contorno.</p>
+            </div>
+          </article>
+
+          <!-- SERVICIO 3 -->
+          <article class="service-card">
+            <div class="card-media">
+              <!-- 📸 IMAGEN PNG SERVICIO 3: Guarda tu archivo como "img/servicio-3.png" -->
+              <img
+                src="img/cespedCerca.jpeg"
+                alt="Jardín amplio recuperado, libre de maleza y con pasto corto"
+                loading="lazy"
+                width="800"
+                height="500"
+              >
+            </div>
+            <div class="card-body">
+              <h3>Limpieza y Recuperación de Césped Alto</h3>
+              <p>Intervención por etapas para jardines descuidados o con pasto muy crecido. Incluye desbroce controlado, nivelación gradual y recolección del residuo vegetal.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CÓMO FUNCIONA (3 PASOS CON ANIMACIÓN ESCALONADA E INTERACTIVA) -->
+    <section id="como-funciona" class="steps section-padding bg-soft">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Proceso sencillo</span>
+          <h2>Cómo funciona el servicio</h2>
+          <p>Sin trámites complicados, sin anticipos y con comunicación directa desde el primer mensaje.</p>
+        </div>
+
+        <div class="steps-grid" id="stepsGrid">
+          <div class="step-card" style="--step-delay: 0ms;">
+            <div class="step-top">
+              <span class="step-number">Paso 01</span>
+              <span class="step-pulse" aria-hidden="true"></span>
+            </div>
+            <h3>Cotiza con una foto o medidas</h3>
+            <p>Envía por WhatsApp una fotografía de tu jardín o las medidas aproximadas del área para darte un presupuesto claro y sin compromiso.</p>
+          </div>
+
+          <div class="step-card" style="--step-delay: 140ms;">
+            <div class="step-top">
+              <span class="step-number">Paso 02</span>
+              <span class="step-pulse" aria-hidden="true"></span>
+            </div>
+            <h3>Agendamos previa cita</h3>
+            <p>No contamos con horarios fijos de apertura; coordinamos juntos el día y la hora exacta según tu disponibilidad y nuestra ruta semanal.</p>
+          </div>
+
+          <div class="step-card" style="--step-delay: 280ms;">
+            <div class="step-top">
+              <span class="step-number">Paso 03</span>
+              <span class="step-pulse" aria-hidden="true"></span>
+            </div>
+            <h3>Pago en persona al finalizar</h3>
+            <p>Revisas el acabado de tu césped y realizas el pago en efectivo en persona únicamente cuando el trabajo está terminado a tu satisfacción.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. RESEÑAS DINÁMICAS -->
+    <section class="reviews section-padding" aria-label="Opiniones de clientes">
+      <div class="container">
+        <div class="reviews-header">
+          <span class="section-kicker">Confianza vecinal</span>
+          <h2>Experiencias de vecinos atendidos</h2>
+          <div class="rating-summary" aria-label="Calificación promedio de 4.6 de 5 estrellas">
+            <div class="stars" aria-hidden="true">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span class="star-half">★</span>
+            </div>
+            <span class="rating-score">4.6 de 5 estrellas</span>
+          </div>
+        </div>
+
+        <div class="carousel-wrapper">
+          <div class="carousel-disc" id="reviewCarousel" aria-live="polite">
+            <div class="review-progress-track">
+              <div class="review-progress-bar" id="reviewProgressBar"></div>
+            </div>
+            <div class="review-stage" id="reviewStage"></div>
+          </div>
+
+          <div class="carousel-controls">
+            <button type="button" class="carousel-btn" id="prevReview" aria-label="Opinión anterior">&#8592;</button>
+            <button type="button" class="btn-shuffle" id="shuffleReview">Ver otra opinión</button>
+            <button type="button" class="carousel-btn" id="nextReview" aria-label="Siguiente opinión">&#8594;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 7. PIE DE PÁGINA (FOOTER) CON CRÉDITOS A GEMINI -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 26C6 16.5 13 8 26 6C24 19 15.5 26 6 26Z" fill="#8BC34A" stroke="#FAFDF6" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M6 26C12 20 18 14 26 6" stroke="#FAFDF6" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Servicio de Podado de Césped</span>
+        </div>
+        <p class="footer-note">Atención personalizada previa cita · Pago en persona al finalizar el servicio.</p>
+      </div>
+
+      <div class="footer-credits">
+        <span>Diseño y desarrollo web asistido con <strong>Gemini</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE DE AYUDA RÁPIDA -->
+  <div class="help-widget">
+    <div class="help-popover" id="helpPopover" role="dialog" aria-labelledby="helpTitle" hidden>
+      <div class="help-popover-header">
+        <h3 id="helpTitle">¿Cómo pedir tu cotización?</h3>
+        <button type="button" class="help-close" id="closeHelp" aria-label="Cerrar ayuda">&times;</button>
+      </div>
+      <ul class="help-list">
+        <li><strong>1. Toma 1 o 2 fotos:</strong> De preferencia con luz de día para ver el largo del pasto.</li>
+        <li><strong>2. Calcula medidas:</strong> Un aproximado en pasos o metros (ej. 5m × 4m) es suficiente.</li>
+        <li><strong>3. Envía por WhatsApp:</strong> Usa el botón verde de arriba para acordar día y hora.</li>
+      </ul>
+    </div>
+
+    <button type="button" class="help-float-btn" id="toggleHelp" aria-expanded="false" aria-controls="helpPopover" aria-label="Ayuda para cotizar">
+      <span class="help-icon">?</span>
+      <span class="help-label">Ayuda</span>
+    </button>
+  </div>
+
+  <script>
+    // =========================================================
+    // 1. ANIMACIÓN EN CANVAS: PODADORA CORTANDO Y REGENERANDO TEXTO
+    // =========================================================
+    (function () {
+      const canvas = document.getElementById('mowerCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const phrases = [
+        "Corte parejo y limpio • Perfilado de orillas • Retiro de maleza",
+        "Atención personalizada previa cita • Jardines siempre verdes",
+        "Cotiza fácil por WhatsApp • Pago en persona al terminar"
+      ];
+
+      let phraseIndex = 0;
+      let width = 0;
+      let height = 96;
+      let dpr = 1;
+
+      let letters = [];
+      let blades = [];
+      let mowerX = -120;
+      let state = 'WRITING';
+      let stateTimer = 0;
+      let visibleChars = 0;
+
+      function setupCanvas() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = rect.width;
+        height = width < 600 ? 84 : 96;
+
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        buildPhrase(phrases[phraseIndex], state === 'WRITING' ? 0 : 1);
+      }
+
+      function getFittedFontSize(text, maxWidth) {
+        let size = width < 480 ? 15 : (width < 768 ? 18 : 22);
+        ctx.font = `600 ${size}px "Outfit", sans-serif`;
+        while (ctx.measureText(text).width > maxWidth && size > 11) {
+          size -= 0.5;
+          ctx.font = `600 ${size}px "Outfit", sans-serif`;
+        }
+        return size;
+      }
+
+      function buildPhrase(text, initialProgress) {
+        const maxWidth = width - 40;
+        const fontSize = getFittedFontSize(text, maxWidth);
+        ctx.font = `600 ${fontSize}px "Outfit", sans-serif`;
+
+        const totalTextWidth = ctx.measureText(text).width;
+        let currentX = (width - totalTextWidth) / 2;
+        const baseY = height * 0.62;
+
+        letters = [];
+        for (let i = 0; i < text.length; i++) {
+          const ch = text[i];
+          const w = ctx.measureText(ch).width;
+          letters.push({
+            char: ch,
+            x: currentX,
+            y: baseY,
+            width: w,
+            fontSize: fontSize,
+            cut: false,
+            regrowProgress: initialProgress
+          });
+          currentX += w;
+        }
+      }
+
+      function spawnGrassBlades(x, y) {
+        const colors = ['#7CB342', '#8BC34A', '#AED581', '#689F38'];
+        for (let i = 0; i < 6; i++) {
+          blades.push({
+            x: x - 14 + (Math.random() * 8 - 4),
+            y: y - 10 + (Math.random() * 10 - 5),
+            vx: -1.5 - Math.random() * 2.8,
+            vy: -2.2 - Math.random() * 2.5,
+            gravity: 0.16,
+            length: 5 + Math.random() * 6,
+            angle: Math.random() * Math.PI,
+            vAngle: (Math.random() - 0.5) * 0.25,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            alpha: 1,
+            settled: false
+          });
+        }
+      }
+
+      function drawSoilTexture() {
+        ctx.fillStyle = '#3E2723';
+        ctx.fillRect(0, height - 14, width, 14);
+
+        ctx.fillStyle = '#5D4037';
+        for (let x = 12; x < width; x += 38) {
+          ctx.beginPath();
+          ctx.arc(x, height - 7, 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function drawMower(x, groundY) {
+        ctx.save();
+        ctx.translate(x, groundY);
+
+        ctx.fillStyle = '#8BC34A';
+        ctx.beginPath();
+        ctx.roundRect(-26, -24, 46, 16, [6, 10, 2, 2]);
+        ctx.fill();
+        ctx.strokeStyle = '#1B3B1E';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.fillStyle = '#1B3B1E';
+        ctx.beginPath();
+        ctx.roundRect(-12, -32, 20, 9, 3);
+        ctx.fill();
+
+        ctx.strokeStyle = '#FAFDF6';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(-22, -20);
+        ctx.lineTo(-38, -42);
+        ctx.lineTo(-45, -42);
+        ctx.stroke();
+
+        ctx.fillStyle = '#33691E';
+        ctx.beginPath();
+        ctx.roundRect(-42, -26, 16, 14, 4);
+        ctx.fill();
+
+        const wheels = [-16, 12];
+        wheels.forEach((wx) => {
+          ctx.fillStyle = '#1B3B1E';
+          ctx.beginPath();
+          ctx.arc(wx, -6, 6, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = '#FAFDF6';
+          ctx.beginPath();
+          ctx.arc(wx, -6, 2.2, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        ctx.restore();
+      }
+
+      function updateAndDraw() {
+        ctx.clearRect(0, 0, width, height);
+        drawSoilTexture();
+
+        const groundY = height - 14;
+
+        if (state === 'WRITING') {
+          visibleChars += 0.65;
+          const count = Math.min(letters.length, Math.floor(visibleChars));
+          for (let i = 0; i < count; i++) {
+            letters[i].regrowProgress = 1;
+          }
+          if (count >= letters.length) {
+            state = 'PAUSE';
+            stateTimer = 0;
+          }
+        } else if (state === 'PAUSE') {
+          stateTimer++;
+          if (stateTimer > 85) {
+            state = 'MOWING';
+            mowerX = -50;
+          }
+        } else if (state === 'MOWING') {
+          const speed = Math.max(3.2, width / 230);
+          mowerX += speed;
+
+          letters.forEach((l) => {
+            if (!l.cut && mowerX + 14 >= l.x + l.width * 0.4) {
+              l.cut = true;
+              l.regrowProgress = 0;
+              if (l.char.trim() !== '') {
+                spawnGrassBlades(l.x + l.width / 2, l.y - 6);
+              }
+            }
+          });
+
+          if (mowerX > width + 70) {
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            buildPhrase(phrases[phraseIndex], 0);
+            state = 'REGROWING';
+            stateTimer = 0;
+          }
+        } else if (state === 'REGROWING') {
+          let allGrown = true;
+          letters.forEach((l) => {
+            if (l.regrowProgress < 1) {
+              l.regrowProgress = Math.min(1, l.regrowProgress + 0.045);
+              allGrown = false;
+            }
+          });
+          if (allGrown) {
+            state = 'PAUSE';
+            stateTimer = 0;
+          }
+        }
+
+        letters.forEach((l) => {
+          if (!l.cut && l.regrowProgress > 0) {
+            ctx.save();
+            ctx.font = `600 ${l.fontSize}px "Outfit", sans-serif`;
+            ctx.fillStyle = '#FAFDF6';
+            const scaleY = l.regrowProgress;
+            ctx.translate(l.x, l.y);
+            ctx.scale(1, scaleY);
+            ctx.fillText(l.char, 0, 0);
+            ctx.restore();
+          }
+        });
+
+        for (let i = blades.length - 1; i >= 0; i--) {
+          const b = blades[i];
+          if (!b.settled) {
+            b.x += b.vx;
+            b.y += b.vy;
+            b.vy += b.gravity;
+            b.angle += b.vAngle;
+
+            if (b.y >= groundY - 2) {
+              b.y = groundY - 2;
+              b.settled = true;
+            }
+          } else {
+            b.alpha -= 0.018;
+          }
+
+          if (b.alpha <= 0) {
+            blades.splice(i, 1);
+            continue;
+          }
+
+          ctx.save();
+          ctx.globalAlpha = Math.max(0, b.alpha);
+          ctx.translate(b.x, b.y);
+          ctx.rotate(b.angle);
+          ctx.strokeStyle = b.color;
+          ctx.lineWidth = 2.2;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(-b.length / 2, 0);
+          ctx.lineTo(b.length / 2, 0);
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        if (state === 'MOWING') {
+          drawMower(mowerX, groundY);
+        }
+
+        requestAnimationFrame(updateAndDraw);
+      }
+
+      window.addEventListener('resize', setupCanvas);
+      setupCanvas();
+      requestAnimationFrame(updateAndDraw);
+    })();
+
+    // =========================================================
+    // 2. ANIMACIÓN DE ENTRADA ESCALONADA PARA LOS 3 PASOS
+    // =========================================================
+    (function () {
+      const stepCards = document.querySelectorAll('.step-card');
+      if (!stepCards.length) return;
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        stepCards.forEach((card) => observer.observe(card));
+      } else {
+        stepCards.forEach((card) => card.classList.add('is-visible'));
+      }
+    })();
+
+    // =========================================================
+    // 3. RESEÑAS DINÁMICAS CON ANIMACIÓN DE TRANSICIÓN Y PROGRESO
+    // =========================================================
+    (function () {
+      const stage = document.getElementById('reviewStage');
+      const progressBar = document.getElementById('reviewProgressBar');
+      const prevBtn = document.getElementById('prevReview');
+      const nextBtn = document.getElementById('nextReview');
+      const shuffleBtn = document.getElementById('shuffleReview');
+      if (!stage) return;
+
+      const reviewPool = [
+        {
+          stars: 5,
+          text: "El jardín estaba bastante alto después de las lluvias y lo dejaron parejito. Además barrieron toda la banqueta antes de irse y cobraron justo lo acordado.",
+          author: "Mariana G.",
+          tag: "Recuperación de césped alto",
+          time: "Hace 4 días"
+        },
+        {
+          stars: 5,
+          text: "Muy puntuales con la cita que acordamos. El perfilado en las orillas del camino de piedra quedó súper derecho y se nota que traen buena herramienta.",
+          author: "Carlos R.",
+          tag: "Corte y perfilado de orillas",
+          time: "Hace 1 semana"
+        },
+        {
+          stars: 4,
+          text: "Me gustó mucho que no piden anticipo y pagas en efectivo hasta que ves el trabajo terminado. Tuvimos que mover la cita un día por lluvia pero avisaron temprano.",
+          author: "Sofía L.",
+          tag: "Podado residencial",
+          time: "Hace 2 semanas"
+        },
+        {
+          stars: 5,
+          text: "Les mandé foto del patio por WhatsApp en la mañana y en menos de 15 minutos ya tenía presupuesto y cita para el jueves. Súper prácticos y limpios.",
+          author: "Héctor M.",
+          tag: "Podado residencial",
+          time: "Hace 2 semanas"
+        },
+        {
+          stars: 5,
+          text: "Tenía un terreno trasero lleno de maleza y pasto crecido. Hicieron dos pasadas para no maltratar el suelo y dejaron todo embolsado listo para recolección.",
+          author: "Fernanda T.",
+          tag: "Limpieza y desbroce",
+          time: "Hace 3 semanas"
+        },
+        {
+          stars: 4,
+          text: "Buen trato y trabajo cuidadoso alrededor de las plantas y los árboles frutales, no lastimaron ningún tronco con la desbrozadora.",
+          author: "Jorge V.",
+          tag: "Podado y orillado",
+          time: "Hace 1 mes"
+        },
+        {
+          stars: 5,
+          text: "Excelente detalle en las guarniciones de la entrada. El pasto agarró un color verde mucho más parejo desde que lo nivelaron.",
+          author: "Patricia D.",
+          tag: "Perfilado de orillas",
+          time: "Hace 1 mes"
+        },
+        {
+          stars: 5,
+          text: "Ideal si no quieres estar atado a contratos mensuales. Escribes cuando lo necesitas, acuerdas hora y listo.",
+          author: "Alejandro S.",
+          tag: "Podado por cita",
+          time: "Hace 1 mes"
+        }
+      ];
+
+      const shuffled = [...reviewPool].sort(() => Math.random() - 0.5);
+      const DURATION = 6500;
+      let currentIndex = 0;
+      let autoTimer;
+
+      function renderStars(count) {
+        return '★'.repeat(count) + '☆'.repeat(5 - count);
+      }
+
+      function animateProgress() {
+        if (!progressBar) return;
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+        void progressBar.offsetWidth;
+        progressBar.style.transition = `width ${DURATION}ms linear`;
+        progressBar.style.width = '100%';
+      }
+
+      function renderReview(index, direction = 'next') {
+        currentIndex = (index + shuffled.length) % shuffled.length;
+        const item = shuffled[currentIndex];
+        const animClass = direction === 'prev' ? 'slide-from-left' : 'slide-from-right';
+
+        stage.innerHTML = `
+          <article class="review-slide ${animClass}">
+            <div class="review-meta-top">
+              <span class="review-tag">${item.tag}</span>
+              <span class="review-time">${item.time}</span>
+            </div>
+            <div class="review-stars" aria-label="${item.stars} de 5 estrellas">${renderStars(item.stars)}</div>
+            <blockquote class="review-quote">“${item.text}”</blockquote>
+            <p class="review-author">${item.author}</p>
+          </article>
+        `;
+
+        animateProgress();
+      }
+
+      function resetTimer() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => {
+          renderReview(currentIndex + 1, 'next');
+        }, DURATION);
+      }
+
+      prevBtn.addEventListener('click', () => {
+        renderReview(currentIndex - 1, 'prev');
+        resetTimer();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        renderReview(currentIndex + 1, 'next');
+        resetTimer();
+      });
+
+      shuffleBtn.addEventListener('click', () => {
+        let randomNext = Math.floor(Math.random() * shuffled.length);
+        if (randomNext === currentIndex) {
+          randomNext = (currentIndex + 1) % shuffled.length;
+        }
+        renderReview(randomNext, 'next');
+        resetTimer();
+      });
+
+      renderReview(0, 'next');
+      resetTimer();
+    })();
+
+    // =========================================================
+    // 4. WIDGET FLOTANTE DE AYUDA RÁPIDA PARA COTIZAR
+    // =========================================================
+    (function () {
+      const toggleBtn = document.getElementById('toggleHelp');
+      const closeBtn = document.getElementById('closeHelp');
+      const popover = document.getElementById('helpPopover');
+      if (!toggleBtn || !popover) return;
+
+      function setOpen(isOpen) {
+        popover.hidden = !isOpen;
+        toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        setOpen(popover.hidden);
+      });
+
+      closeBtn.addEventListener('click', () => {
+        setOpen(false);
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!popover.hidden && !popover.contains(e.target) && !toggleBtn.contains(e.target)) {
+          setOpen(false);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
